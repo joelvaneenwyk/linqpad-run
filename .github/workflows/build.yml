@@ -1,0 +1,37 @@
+﻿name: build
+
+on: [push, pull_request]
+
+env:
+  SLN:  LPRun.sln
+  SLN_CONFIG: Release
+  BIN_POSTFIX: .Bin
+  RETENTION_DAYS: 1
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+
+    # Check out
+
+    - name: Check out ${{env.SLN}}
+      uses: actions/checkout@v4.1.1
+
+    # LPRun
+
+    - name: Restore ${{env.SLN}}
+      run: dotnet restore ${{env.SLN}}
+
+    - name: Build ${{env.SLN}} ${{env.SLN_CONFIG}}
+      run: dotnet build ${{env.SLN}} --configuration ${{env.SLN_CONFIG}} --no-restore -p:GITHUB_ACTIONS=true
+
+    # Upload artifacts
+
+    - name: Publish LPRun ${{env.SLN_CONFIG}}
+      uses: actions/upload-artifact@v4.3.0
+      with:
+        name: LPRun${{env.BIN_POSTFIX}}
+        path: bin/${{env.SLN_CONFIG}}/LPRun.*.*nupkg
+        retention-days: ${{env.RETENTION_DAYS}}
