@@ -267,6 +267,7 @@ var driverProperties = Mock.Of<IDriverProperties>(props =>
 ## Authors ##
 
 * [Ivan Ivon](https://github.com/i2van)
+* [LINQPad.Runtime](https://www.linqpad.net/LINQPad8.aspx)/[LPRun](https://www.linqpad.net/lprun.aspx) binaries ([license](https://www.linqpad.net/eula.txt)) by [Joseph Albahari](https://www.albahari.com/)
 
 ## Credits ##
 
