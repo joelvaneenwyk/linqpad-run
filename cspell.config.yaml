@@ -1,0 +1,7 @@
+version: "0.2"
+dictionaryDefinitions:
+  - name: cspell-lprun-dictionary
+    path: .github/config/cspell-lprun-dictionary.txt
+    addWords: true
+dictionaries:
+  - cspell-lprun-dictionary
