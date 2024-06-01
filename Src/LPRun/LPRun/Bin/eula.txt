@@ -6,7 +6,7 @@ all intellectual ownership of LINQPad.
 
 Usage
 
-You may redistribute an unmodified version of the LINQPad executable with a commercial or 
+You may redistribute an unmodified version of the LINQPad executable with a commercial or
 non-commercial application or library for the sole purpose of allowing end-users to run LINQPad.
 Redistribution for other purposes requires written permission from the licensor.
 
@@ -23,7 +23,7 @@ LINQPad sends only a minimal set of data required to reasonably perform the task
 
 Disclaimer
 
-LINQPad is provided "as is" without any warranty of any kind, either expressed or implied. 
+LINQPad is provided "as is" without any warranty of any kind, either expressed or implied.
 The licensor shall in no event be liable for any damages including, but not limited to,
 direct, indirect, special, incidental or consequential damages or other losses arising out
 of the use of or inability to use the product.
@@ -31,7 +31,7 @@ of the use of or inability to use the product.
 Licensing Terminology
 
 - A single-user license is for use by a single developer, and can be installed on up to 3
-  machines at a time, plus 3 virtual machines. 
+  machines at a time, plus 3 virtual machines.
 
 - A 10-user team license is for use by up to ten developers, on up to 25 machines.
 
