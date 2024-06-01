@@ -6,12 +6,16 @@ on:
   pull_request:
     branches: [main, develop]
   schedule:
-    - cron: '40 19 * * 0'
+    - cron: "40 19 * * 0"
+
+env:
+  SLN: LPRun.sln
+  SLN_CONFIG: Release
+  BIN_POSTFIX: .Bin
+  RETENTION_DAYS: 1
 
 jobs:
   analyze:
-    name: Analyze (${{ matrix.language }})
-  
     runs-on: windows-latest
     timeout-minutes: 120
     permissions:
@@ -29,34 +33,36 @@ jobs:
       fail-fast: false
       matrix:
         include:
-        - language: csharp
-          build-mode: manual
+          - language: csharp
+            build-mode: manual
+
+    name: Analyze (${{ matrix.language }})
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-    # Initializes the CodeQL tools for scanning.
-    - name: Initialize CodeQL
-      uses: github/codeql-action/init@v3
-      with:
-        languages: ${{ matrix.language }}
-        build-mode: ${{ matrix.build-mode }}
+      # Initializes the CodeQL tools for scanning.
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v3
+        with:
+          languages: ${{ matrix.language }}
+          build-mode: ${{ matrix.build-mode }}
 
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v4.0.0
-      with:
-        dotnet-version: 8.0.x
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4.0.0
+        with:
+          dotnet-version: 8.0.x
 
-    - if: matrix.build-mode == 'manual'
-      name: Restore ${{env.SLN}}
-      run: dotnet restore ${{env.SLN}}
+      - if: matrix.build-mode == 'manual'
+        name: Restore ${{env.SLN}}
+        run: dotnet restore ${{env.SLN}}
 
-    - if: matrix.build-mode == 'manual'
-      name: Build ${{env.SLN}} ${{env.SLN_CONFIG}}
-      run: dotnet build ${{env.SLN}} --configuration ${{env.SLN_CONFIG}} --no-restore -p:GITHUB_ACTIONS=true
+      - if: matrix.build-mode == 'manual'
+        name: Build ${{env.SLN}} ${{env.SLN_CONFIG}}
+        run: dotnet build ${{env.SLN}} --configuration ${{env.SLN_CONFIG}} --no-restore -p:GITHUB_ACTIONS=true
 
-    - name: Perform CodeQL Analysis
-      uses: github/codeql-action/analyze@v3
-      with:
-        category: "/language:${{matrix.language}}"
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v3
+        with:
+          category: "/language:${{matrix.language}}"
