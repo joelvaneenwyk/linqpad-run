@@ -1,7 +1,7 @@
 # LINQPad Driver LPRun Unit/Integration Tests Runner
 
-> [!WARNING]
-> This is a work-in-progress fork of [LPRun](https://github.com/i2van/LPRun). Use at your own risk.
+> [!CAUTION]
+> This is an **experimental** fork of [LPRun](https://github.com/i2van/LPRun) to see how it could be refactored and _potentially_ improved in the process. Use at your own risk. ⚠️
 
 [![Latest build](https://github.com/i2van/LPRun/workflows/build/badge.svg)](https://github.com/i2van/LPRun/actions)
 [![NuGet](https://img.shields.io/nuget/v/LPRun)](https://www.nuget.org/packages/LPRun)
